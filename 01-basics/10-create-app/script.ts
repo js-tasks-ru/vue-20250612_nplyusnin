@@ -6,7 +6,7 @@ const app = createApp(defineComponent({
     return { message }
   },
   name: 'CreateAppExample',
-  template: `<h1>{{message}}</h1>`,
+  template: `<h1>{{ message }}</h1>`,
 }))
 
 app.mount('#app')
