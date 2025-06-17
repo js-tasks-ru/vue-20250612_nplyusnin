@@ -7,9 +7,7 @@ export default defineComponent({
     const weatherData: WeatherData[] = getWeatherData()
 
     function kelvinToCelsius(kelvin: number): string {
-      return Number((kelvin - 273.15).toFixed(1)).toLocaleString("en-US", {
-        minimumFractionDigits: 1
-      })
+      return Number(kelvin - 273.15).toFixed(1)
     }
 
     function mbarToMmHg(mbar: number): number {
