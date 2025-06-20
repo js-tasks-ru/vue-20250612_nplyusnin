@@ -55,8 +55,8 @@ export default defineComponent({
       </div>
       <ul aria-label="Emails">
         <li 
-          v-for="email in markedEmails" 
-          :key="email"
+          v-for="(email, index) in markedEmails" 
+          :key="index"
           :class="{ 'marked': email.marked }"
         >
           {{ email.email }}
