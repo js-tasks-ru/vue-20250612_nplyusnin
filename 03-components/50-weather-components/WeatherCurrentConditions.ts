@@ -1,5 +1,6 @@
 import { defineComponent } from "vue";
 import { WeatherConditionIcons } from './weather.service.ts'
+import { mbarToMmHg } from './mbar_to_mm_hg.ts'
 
 export default defineComponent({
   name: "WeatherCurrentConditions",
@@ -14,10 +15,6 @@ export default defineComponent({
   setup() {
     function kelvinToCelsius(kelvin: number): string {
       return Number(kelvin - 273.15).toFixed(1)
-    }
-
-    function mbarToMmHg(mbar: number): number {
-      return Math.round(mbar * 0.750062)
     }
 
     return {

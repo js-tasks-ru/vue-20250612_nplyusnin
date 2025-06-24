@@ -1,4 +1,5 @@
 import { defineComponent } from 'vue'
+import { mbarToMmHg } from './mbar_to_mm_hg.ts'
 
 export default defineComponent({
   name: 'WeatherDetails',
@@ -11,10 +12,6 @@ export default defineComponent({
   },
 
   setup() {
-    function mbarToMmHg(mbar: number): number {
-      return Math.round(mbar * 0.750062)
-    }
-
     return {
       mbarToMmHg
     }
