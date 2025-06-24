@@ -7,6 +7,13 @@ import WeatherTitle from './WeatherTitle.ts'
 export default defineComponent({
   name: 'WeatherCard',
 
+  components: {
+    WeatherCurrentConditions,
+    WeatherCurrentDetails,
+    WeatherAlert,
+    WeatherTitle,
+  },
+
   props: {
     weather: {
       type: Object,
@@ -22,13 +29,6 @@ export default defineComponent({
     return {
       isNight,
     }
-  },
-
-  components: {
-    WeatherCurrentConditions,
-    WeatherCurrentDetails,
-    WeatherAlert,
-    WeatherTitle,
   },
 
   template: `

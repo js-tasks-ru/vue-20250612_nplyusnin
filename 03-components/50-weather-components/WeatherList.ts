@@ -4,15 +4,15 @@ import WeatherCard from './WeatherCard.ts'
 export default defineComponent({
   name: 'WeatherList',
 
+  components: {
+    WeatherCard
+  },
+
   props: {
     weatherData: {
       type: Array,
       required: true
     }
-  },
-
-  components: {
-    WeatherCard
   },
 
   template: `

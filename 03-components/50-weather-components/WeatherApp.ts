@@ -4,16 +4,17 @@ import WeatherList from './WeatherList.ts'
 
 export default defineComponent({
   name: 'WeatherApp',
+
+  components: {
+    WeatherList,
+  },
+
   setup() {
     const weatherData = getWeatherData()
 
     return {
       weatherData,
     }
-  },
-
-  components: {
-    WeatherList,
   },
 
   template: `

@@ -8,6 +8,7 @@ export default defineComponent({
       type: String,
       required: true
     },
+
     currentTime: {
       type: String,
       required: true
