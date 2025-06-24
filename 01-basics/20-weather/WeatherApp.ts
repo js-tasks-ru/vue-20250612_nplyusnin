@@ -3,6 +3,7 @@ import { getWeatherData, WeatherConditionIcons, type WeatherData } from './weath
 
 export default defineComponent({
   name: 'WeatherApp',
+
   setup() {
     const weatherData: WeatherData[] = getWeatherData()
 
