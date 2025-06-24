@@ -6,7 +6,7 @@ export default defineComponent({
   name: 'SelectedMeetupApp',
 
   setup() {
-    const meetupIds = ["1", "2", "3", "4", "5"]
+    const meetupIds = [1, 2, 3, 4, 5]
     const currentMeetupId = ref(meetupIds[0])
     const currentMeetup = ref<MeetupDTO | null>(null)
 
@@ -33,8 +33,8 @@ export default defineComponent({
         <button 
           class="button button--secondary" 
           type="button" 
-          :disabled="currentMeetupId === '1'"
-          @click="currentMeetupId = String(Number(currentMeetupId) - 1)"
+          :disabled="currentMeetupId <= 1"
+          @click="currentMeetupId = currentMeetupId - 1"
         >
           Предыдущий
         </button>
@@ -46,7 +46,7 @@ export default defineComponent({
               class="radio-group__input"
               type="radio"
               name="meetupId"
-              value="1"
+              :value="1"
               @change="currentMeetupId = 1"
               v-model="currentMeetupId"
             />
@@ -58,7 +58,7 @@ export default defineComponent({
               class="radio-group__input"
               type="radio"
               name="meetupId"
-              value="2"
+              :value="2"
               v-model="currentMeetupId"
             />
             <label for="meetup-id-2" class="radio-group__label">2</label>
@@ -69,7 +69,7 @@ export default defineComponent({
               class="radio-group__input"
               type="radio"
               name="meetupId"
-              value="3"
+              :value="3"
               v-model="currentMeetupId"
             />
             <label for="meetup-id-3" class="radio-group__label">3</label>
@@ -80,7 +80,7 @@ export default defineComponent({
               class="radio-group__input"
               type="radio"
               name="meetupId"
-              value="4"
+              :value="4"
               v-model="currentMeetupId"
             />
             <label for="meetup-id-4" class="radio-group__label">4</label>
@@ -91,7 +91,7 @@ export default defineComponent({
               class="radio-group__input"
               type="radio"
               name="meetupId"
-              value="5"
+              :value="5"
               v-model="currentMeetupId"
             />
             <label for="meetup-id-5" class="radio-group__label">5</label>
@@ -101,8 +101,8 @@ export default defineComponent({
         <button 
           class="button button--secondary" 
           type="button"
-          :disabled="currentMeetupId === '5'"
-          @click="currentMeetupId = String(Number(currentMeetupId) + 1)"
+          :disabled="currentMeetupId >= 5"
+          @click="currentMeetupId = currentMeetupId + 1"
         >
           Следующий
         </button>
