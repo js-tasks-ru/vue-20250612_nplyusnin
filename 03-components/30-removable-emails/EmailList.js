@@ -12,12 +12,7 @@ export default defineComponent({
     emails: {
       type: Array,
       required: true,
-    },
-
-    onRemove: {
-      type: Function,
-      required: true,
-    },
+    }
   },
 
   template: `
@@ -27,7 +22,7 @@ export default defineComponent({
         :key="email"
         :email="email"
         :marked="isMarked"
-        @remove="onRemove(index)"
+        @remove="$emit('remove', index)"
       />
     </ul>
   `,
