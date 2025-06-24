@@ -1,4 +1,4 @@
-import { defineComponent, onBeforeMount, ref, watch, watchEffect } from 'vue'
+import { defineComponent, onBeforeMount, ref, watch } from 'vue'
 import type { MeetupDTO } from './meetups.types.ts'
 import { getMeetup } from './meetupsService.ts'
 
@@ -16,7 +16,6 @@ export default defineComponent({
     })
 
     watch(currentMeetupId, async (newMeetupId) => {
-      console.log(newMeetupId)
       currentMeetup.value = await getMeetup(newMeetupId)
       document.title = currentMeetup.value.title
     })
