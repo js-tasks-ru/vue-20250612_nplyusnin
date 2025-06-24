@@ -46,9 +46,9 @@ export default defineComponent({
 
   template: `
     <div class="counter">
-      <UiButton aria-label="Decrement" :disabled="$props.min >= $props.count" @click="decrement">➖</UiButton>
+      <UiButton aria-label="Decrement" :disabled="min >= count" @click="decrement">➖</UiButton>
       <span class="count" data-testid="count">{{ count }}</span>
-      <UiButton aria-label="Increment" :disabled="$props.max <= $props.count" @click="increment">➕</UiButton>
+      <UiButton aria-label="Increment" :disabled="max <= count" @click="increment">➕</UiButton>
     </div>
   `,
 })

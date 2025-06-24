@@ -1,4 +1,4 @@
-import { defineComponent } from 'vue'
+import { defineComponent, computed } from 'vue'
 import WeatherCurrentConditions from './WeatherCurrentConditions.ts'
 import WeatherCurrentDetails from './WeatherCurrentDetails.ts'
 import WeatherAlert from './WeatherAlert.ts'
@@ -21,10 +21,10 @@ export default defineComponent({
     }
   },
 
-  setup() {
-    function isNight(dt:string, sunrise:string, sunset:string): boolean {
-      return dt > sunset || dt < sunrise
-    }
+  setup(props) {
+    const isNight = computed(() => {
+      return props.weather.current.dt > props.weather.current.sunset || props.weather.current.dt < props.weather.current.sunrise
+    })
 
     return {
       isNight,
@@ -34,7 +34,7 @@ export default defineComponent({
   template: `
     <li 
       class="weather-card"
-      :class="{ 'weather-card--night': isNight(weather.current.dt, weather.current.sunrise, weather.current.sunset) }"
+      :class="{ 'weather-card--night': isNight }"
     >
       <WeatherAlert
         :weatherAlert="weather.alert"
