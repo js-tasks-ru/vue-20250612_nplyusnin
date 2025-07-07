@@ -1,13 +1,42 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import type { Slot } from 'vue'
+import { computed } from 'vue'
+
+const props = defineProps<{
+  for: string
+  label?: string
+  description?: string
+  hint?: string
+  invalid?: boolean
+  showHint?: boolean
+}>()
+
+defineSlots<{
+  default?: Slot
+  label?: Slot
+  description?: Slot
+}>()
+
+const hintOrError = computed(() => {
+  return props.showHint || props.invalid ? props.hint : ""
+})
+</script>
 
 <template>
   <div class="form-group">
     <div class="form-group__label-wrapper">
-      <label for="FOR" class="form-group__label">LABEL</label>
-      <div class="form-group__description">DESCRIPTION</div>
+      <label :for="props.for" class="form-group__label">
+        <slot name="label">{{ label }}</slot>
+      </label>
+
+      <div class="form-group__description">
+        <slot name="description">{{ description }}</slot>
+      </div>
     </div>
-    <div class="form-group__control">CONTENT</div>
-    <div class="form-group__hint form-group__hint--invalid">HINT | ERROR</div>
+    <div class="form-group__control">
+      <slot></slot>
+    </div>
+    <div v-if="hint" class="form-group__hint" :class="props.invalid ? 'form-group__hint--invalid' : undefined">{{ hintOrError }}</div>
   </div>
 </template>
 
