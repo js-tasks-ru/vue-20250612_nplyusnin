@@ -11,7 +11,7 @@ const props = defineProps<{
   showHint?: boolean
 }>()
 
-const slots = defineSlots<{
+defineSlots<{
   default?: Slot
   label?: Slot
   description?: Slot
@@ -20,33 +20,23 @@ const slots = defineSlots<{
 const hintOrError = computed(() => {
   return props.showHint || props.invalid ? props.hint : ""
 })
-
-const invalidClass = computed(() => {
-  return props.invalid ? 'form-group__hint--invalid' : undefined
-})
 </script>
 
 <template>
   <div class="form-group">
     <div class="form-group__label-wrapper">
       <label :for="props.for" class="form-group__label">
-        <slot v-if="slots.label" name="label"></slot>
-        <template v-else>
-          {{ label }}
-        </template>
+        <slot name="label">{{ label }}</slot>
       </label>
 
       <div class="form-group__description">
-        <slot v-if="slots.description" name="description"></slot>
-        <template v-else>
-          {{ description }}
-        </template>
+        <slot name="description">{{ description }}</slot>
       </div>
     </div>
     <div class="form-group__control">
       <slot></slot>
     </div>
-    <div v-if="hint" class="form-group__hint" :class="invalidClass">{{ hintOrError }}</div>
+    <div v-if="hint" class="form-group__hint" :class="props.invalid ? 'form-group__hint--invalid' : undefined">{{ hintOrError }}</div>
   </div>
 </template>
 
