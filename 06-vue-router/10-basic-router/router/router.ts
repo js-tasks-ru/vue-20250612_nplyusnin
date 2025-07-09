@@ -21,5 +21,15 @@ export const router = createRouter({
       name: 'bar',
       component: PageBar,
     },
+    {
+      path: '/login',
+      name: 'login',
+      component: () => import('../views/PageLogin.vue'),
+    },
+    {
+      path: '/register',
+      name: 'register',
+      component: () => import('../views/PageRegister.vue'),
+    }
   ],
 })

@@ -36,7 +36,7 @@ const hintOrError = computed(() => {
     <div class="form-group__control">
       <slot></slot>
     </div>
-    <div v-if="hint" class="form-group__hint" :class="props.invalid ? 'form-group__hint--invalid' : undefined">{{ hintOrError }}</div>
+    <div v-if="hint" class="form-group__hint" :class="{ 'form-group__hint--invalid': props.invalid }">{{ hintOrError }}</div>
   </div>
 </template>
 
